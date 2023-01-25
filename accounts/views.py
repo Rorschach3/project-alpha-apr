@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 from accounts.forms import LogInForm
 
 # Create your views here.

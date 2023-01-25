@@ -1,6 +1,5 @@
 {% load static %}
 
-{% block content %}
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -13,28 +12,26 @@
         <main>
             <div>
                 <h1>My Projects</h1>
-                {% if list_projects %}
+                    <p>You are not assigned to any projects</p>
+                    {% if projects %}
                     <table>
                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Number of tasks</th>
-                            </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Number of tasks</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            {% for project in list_projects %}
+                        {% for project in projects %}
                             <tr>
-                                <td>{{ project.name }}</td>
-                                <td>{{ project.tasks.count }}</td>
+                            <td>{{ project.name }}</td>
+                            <td>{{ project.tasks.count }}</td>
                             </tr>
-                            {% endfor %}
+                        {% endfor %}
                         </tbody>
                     </table>
-                {% else %}
-                                <p>You are not assigned to any projects</p>
-                {% endif %}
+                    {% endif %}
             </div>
         </main>
     </body>
 </html>
-                {% endblock content %}

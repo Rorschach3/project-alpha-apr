@@ -12,25 +12,26 @@
         <main>
             <div>
                 <h1>My Projects</h1>
-                    <p>You are not assigned to any projects</p>
-                    {% if projects %}
-                    <table>
-                        <thead>
+                <table>
+                    <thead>
                         <tr>
                             <th>Name</th>
                             <th>Number of tasks</th>
                         </tr>
-                        </thead>
-                        <tbody>
+                    </thead>
+                    <tbody>
                         {% for project in projects %}
+                        {% if projects %}
                             <tr>
                             <td>{{ project.name }}</td>
                             <td>{{ project.tasks.count }}</td>
                             </tr>
+                        {% else %}
+                        <p>You are not assigned to any projects</p>
+                        {% endif %}
                         {% endfor %}
-                        </tbody>
-                    </table>
-                    {% endif %}
+                    </tbody>
+                </table>
             </div>
         </main>
     </body>

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from accounts.forms import LogInForm, SignUpForm
 
+
 # Create your views here.
 def user_login(request):
     if request.method == "POST":
@@ -17,13 +18,15 @@ def user_login(request):
     else:
         form = LogInForm()
     context = {
-            "form": form,
+        "form": form,
     }
     return render(request, "accounts/login.html", context)
+
 
 def user_logout(request):
     logout(request)
     return redirect("/accounts/login/")
+
 
 def user_signup(request):
     if request.method == "POST":
@@ -33,7 +36,9 @@ def user_signup(request):
             password = form.cleaned_data["password"]
             confirm = form.cleaned_data["password_confirmation"]
             if password == confirm:
-                user = User.objects.create_user(username=username, password=password)
+                user = User.objects.create_user(
+                    username=username, password=password
+                )
                 login(request, user)
                 return redirect("list_projects")
             else:

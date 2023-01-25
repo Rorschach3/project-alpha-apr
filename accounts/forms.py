@@ -4,18 +4,17 @@ from django import forms
 class LogInForm(forms.Form):
     username = forms.CharField(label="Username", max_length=150)
     password = forms.CharField(
-        label="Password",
-        max_length=150,
-        widget=forms.PasswordInput
-        )
+        label="Password", max_length=150, widget=forms.PasswordInput
+    )
+
 
 class SignUpForm(forms.Form):
-    username = forms.CharField(
-        max_length=150)
+    username = forms.CharField(max_length=150)
     password = forms.CharField(
         max_length=150,
         widget=forms.PasswordInput(),
     )
+
     password_confirmation = forms.CharField(
         max_length=150,
         widget=forms.PasswordInput(),

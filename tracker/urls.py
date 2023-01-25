@@ -15,12 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic.base import RedirectView
+from django.shortcuts import redirect
 
-urlpatterns =[
+
+def home(request):
+    return redirect("/list_projects/")
+
+
+urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", RedirectView.as_view(url="/projects/"), name="home"),
+    path("", home, name="home"),
     path("projects/", include("projects.urls")),
     path("accounts/", include("accounts.urls")),
-    path('tasks/', include('tasks.urls')),
-    ]
+    path("tasks/", include("tasks.urls")),
+]
